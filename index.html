@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body onload="displayInventory()">
+    <div class="container">
+
+        <div class="header">
+            <div class="nav">
+                <h4 class="title-class">
+                    Inventory
+                </h4>
+
+                <div>
+                    <div class="add-new__class">
+                        <button id="create-btn-modal" type="button">CREATE NEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="breacrumb">
+                this is the second header
+            </div> -->
+        </div>
+
+        <div class="content">
+            <div class="content-container">
+
+                <div class="main-content">
+                    <table>
+                        <thead>
+                            <th>Product name</th>
+                            <th>No. in store</th>
+                            <th>Price per One</th>
+                            <th>On Display</th>
+                            <th>Count on Display</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody class="table-display">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div class="news__class">
+                    <span>right sid content goes here</span>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <span>This is the footer</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <div class="modal-body">
+                <h4>add new entry</h4>
+                <div class="create-form">
+                    <form action="">
+                        <div class="input-group">
+                            <label for="product">Product</label>
+                            <input type="text" class="productname" placeholder="Product name">
+                        </div>
+                        <div class="input-group">
+                            <label for="">Total Product Available</label>
+                            <input type="text" class="productcount" placeholder="Product Count">
+                        </div>
+                        <div class="input-group">
+                            <label for="onShelf">On Shelf</label>
+                            <select name="onshelf" class="onshelf" id="">
+                                <option value="">Select an option</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Product Display on Shelf</label>
+                            <input type="text" class="shelfcount" placeholder="Shelf count">
+                        </div>
+                        <div class="input-group">
+                            <label for="">Product Price</label>
+                            <input type="text" class="price" placeholder="Price">
+                        </div>
+                  
+                        <div class="input-group">
+                            <label for="onShelf">Product Category</label>
+                            <select name="onshelf" class="category" id="">
+                                <option value="">Choose</option>
+                                <option value="Frozen">Frozen Food</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Toiletries">Toiletries</option>
+                                <option value="home">Home</option>
+                                <option value="juice">Juice</option>
+                                <option value="soda">Soda</option>
+                                <option value="alcohol">Alcohol</option>
+                                <option value="biscuit">Cookies</option>
+                                <option value="tools">Tools</option>
+                                <option value="cloths">Outfits</option>
+                            </select>
+                        </div>
+
+                        <div class="add-btn-submit">
+                            <button type="button" onclick="add()">Add Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+       <div class="modal-edit">
+        <div class="modal-content-edit">
+            <span class="close-edit" onclick="closeEditModal()">&times;</span>
+
+            <div class="modal-body">
+                <h4>Edit Entry</h4>
+                <div class="edit-form">
+                    <form action="">
+                        <input type="text" hidden class="id" placeholder="Product Count">
+
+                        <div class="input-group">
+                            <label for="product">Product</label>
+                            <input type="text" class="editproductname" placeholder="Product name">
+                        </div>
+                        <div class="input-group">
+                            <label for="">Total Product Available</label>
+                            <input type="text" class="editproductcount" placeholder="Product Count">
+                        </div>
+                        <div class="input-group">
+                            <label for="onShelf">On Shelf</label>
+                            <select name="editonshelf" class="editonshelf" id="">
+                                <option value="">Select an option</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Product Display on Shelf</label>
+                            <input type="text" class="editshelfcount" placeholder="Shelf count">
+                        </div>
+                        <div class="input-group">
+                            <label for="">Product Price</label>
+                            <input type="text" class="editprice" placeholder="Price">
+                        </div>
+                  
+                        <div class="input-group">
+                            <label for="category">Product Category</label>
+                            <select name="editcategory" class="editcategory" id="">
+                                <option value="">Choose</option>
+                                <option value="Frozen">Frozen Food</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Toiletries">Toiletries</option>
+                                <option value="home">Home</option>
+                                <option value="juice">Juice</option>
+                                <option value="soda">Soda</option>
+                                <option value="alcohol">Alcohol</option>
+                                <option value="biscuit">Cookies</option>
+                                <option value="tools">Tools</option>
+                                <option value="cloths">Outfits</option>
+                            </select>
+                        </div>
+
+                        <div class="add-btn-submit">
+                            <button type="button" onclick="edit()">Edit Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <script src="script.js" defer></script>
+
+</body>
+</html>
